@@ -1,6 +1,6 @@
 import json
 import pygal
-
+import math
 
 filename='btc_close_2017_requests.json'
 with open(filename) as f:
@@ -26,7 +26,8 @@ first_chart=pygal.Line(x_label_rotation=20,show_minor_x_labels=False)
 first_chart.x_labels=dates
 first_chart.x_title="日期"
 first_chart.x_labels_major=dates[::N]
-first_chart.add('收盘价',closes)
-first_chart.render_to_file('first_chart.svg')
+closes_log=[math.log10(_) for _ in closes]
+first_chart.add('收盘价',closes_log)
+first_chart.render_to_file('first_chart_log.svg')
 
     
