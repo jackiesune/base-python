@@ -8,11 +8,15 @@ while active:
     
     rw=RandWalk(10000)
     rw.fill_walk()
-
+    #设置窗口大小
+    x,y=tuple(input("please enter number to control the size of figure :").split())
+    plt.figure(figsize=(int(x),int(y)))
     plt.scatter(rw.xvalues,rw.yvalues,s=5,edgecolor='none')
+
     #标记起点和终点
     plt.scatter(0,0,s=15,c='red',edgecolor='none')
     plt.scatter(rw.xvalues[-1],rw.yvalues[-1],c='red',edgecolor='none')
+
     #去掉坐标轴
     plt.axes().get_xaxis().set_visible(False)
     plt.axes().get_yaxis().set_visible(False)
