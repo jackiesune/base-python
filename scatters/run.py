@@ -10,13 +10,16 @@ while active:
     rw.fill_walk()
 
     plt.scatter(rw.xvalues,rw.yvalues,s=5,edgecolor='none')
+    #标记起点和终点
+    plt.scatter(0,0,s=15,c='red',edgecolor='none')
+    plt.scatter(rw.xvalues[-1],rw.yvalues[-1],c='red',edgecolor='none')
     #去掉坐标轴
     plt.axes().get_xaxis().set_visible(False)
     plt.axes().get_yaxis().set_visible(False)
 
 
     plt.show()
-    message=input("Do you want to continue('q' to quit):")
-    if message=='q':
-        active=False
+    messag=input("Do you want to continue('q' to quit):")
+    if messag=='q':
+        break
 
