@@ -48,4 +48,7 @@ def line_charts(x_data,y_data,filename,y_legend):
 
 id_month=dates.index('2017-12-01')
 line_chart_month=line_charts(months[:id_month],closes[:id_month],'收盘月日均值','月日均值')
-    
+   
+id_week=dates.index('2017-12-11')
+line_chart_week=line_charts(weeks[1:id_week],closes[1:id_week],'收盘周日均值','周日均值')
+
