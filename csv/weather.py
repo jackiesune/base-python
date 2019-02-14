@@ -13,10 +13,13 @@ with open(filename) as f:
 
     #只提取最高温度
     high=[]
+    low=[]
     dates=[]
     for t  in reader:
         maxt=int(t[1])
         high.append(maxt)
+        lowt=int(t[3])
+        low.append(lowt)
         date=datetime.strptime(t[0],"%Y-%m-%d")
         dates.append(date)
 
@@ -28,6 +31,12 @@ with open(filename) as f:
     #自动倾斜日期
     fig.autofmt_xdate()
     plt.plot(dates,high,c='red')
+    plt.plot(dates,low,c='blue')
+    plt.fill_between(dates,high,low,facecolor='blue',alpha=0.15)
+
+
+
+
     plt.show()
 
 
