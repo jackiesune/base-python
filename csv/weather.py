@@ -2,7 +2,8 @@ from matplotlib import pyplot as plt
 import csv
 from datetime import datetime 
 
-filename="sitka_weather_07-2014.csv"
+#filename="sitka_weather_07-2014.csv"
+filename="sitka_weather_2014.csv"
 with open(filename) as f:
     reader=csv.reader(f)
     head_row=next(reader)
