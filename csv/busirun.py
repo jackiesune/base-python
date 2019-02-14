@@ -30,4 +30,22 @@ closes_log=[math.log10(_) for _ in closes]
 first_chart.add('收盘价',closes_log)
 first_chart.render_to_file('first_chart_log.svg')
 
+#from operator import itemgetter
+from itertools import groupby
+
+def line_charts(x_data,y_data,filename,y_legend):
+    xy_map=[]
+    for x,y in groupby(sorted(zip(x_data,y_data)),key=lambda _:_[0]):
+        y_list=[v for _,v in y]
+        xy_map.append([x,sum(y_list)/len(y_list)])
+    xvalue,yvalue=[*zip(*xy_map)]
+    line_chart=pygal.Line()
+    line_chart.title=filename
+    line_chart.x_labels=xvalue
+    line_chart.add(y_legend,yvalue)
+    line_chart.render_to_file(filename+'.svg')
+    return line_chart
+
+id_month=dates.index('2017-12-01')
+line_chart_month=line_charts(months[:id_month],closes[:id_month],'收盘月日均值','月日均值')
     
