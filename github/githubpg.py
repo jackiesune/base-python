@@ -2,6 +2,9 @@ import requests
 from pygal.style import LightenStyle as LS,LightColorizedStyle as LCS
 import pygal
 
+
+
+
 json_url="https://api.github.com/search/repositories?q=language:python&sort=stars"
 limit_url="https://api.github.com/rate_limit"
 
@@ -21,6 +24,8 @@ for ddict in re['items']:
         'value':star,'xlink':purl}
     pdicts.append(pdict)
     #某个项目无desc故需要排错
+    if not desc:
+        print(ddict['name']+'has no desc')
     ddicts.append({
             'value':star,
             'label':desc,
@@ -45,9 +50,5 @@ chart_bar.x_labels=names
 
 chart_bar.add("",pdicts)
 chart_bar.render_to_file('python.svg')
-
-
-
-
 
 
